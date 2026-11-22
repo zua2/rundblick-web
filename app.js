@@ -301,7 +301,8 @@ function zeichnen(zeit) {
   const breite = 140, zeilenHoehe = 58, horizont = H * 0.6;
   const maxZeilen = Math.max(3, Math.floor((horizont - 150) / zeilenHoehe));
   const zeilen = [];
-  let html = "";
+  // Zuerst alle Striche, dann alle Labels – so liegen die Striche HINTER den Labels
+  let striche = "", html = "";
   for (const l of auswahl) {
     const x = W / 2 + s * Math.tan(l.winkel * RAD);
     const links = Math.min(Math.max(x - breite / 2, 0), W - breite), mitte = links + breite / 2;
@@ -311,12 +312,12 @@ function zeichnen(zeit) {
     const stiel = 16 + zeilenHoehe * z, oben = horizont - stiel - 44;
     const istFokus = l.poi === fokus ? " fokus" : "";
     const idx = pois.indexOf(l.poi);
-    html += `<div class="stiel${istFokus}" style="left:${x - 1}px;top:${horizont - stiel}px;height:${stiel}px"></div>` +
-      `<div class="label${istFokus}" data-i="${idx}" style="left:${links}px;top:${oben}px">` +
+    striche += `<div class="stiel${istFokus}" style="left:${x - 1}px;top:${horizont - stiel}px;height:${stiel}px"></div>`;
+    html += `<div class="label${istFokus}" data-i="${idx}" style="left:${links}px;top:${oben}px">` +
       `<div class="name">${TYPEN[l.poi.typ]} ${esc(l.poi.name)}</div>` +
       `<div class="info">${km(l.dist)}${l.poi.hoehe ? " · " + l.poi.hoehe + " m" : ""}</div></div>`;
   }
-  $("labels").innerHTML = html;
+  $("labels").innerHTML = striche + html;
 
   $("statusKompass").textContent =
     `🧭 ${Math.round(blick)}° ${kurzRichtung(blick)}  ·  ${t("im_blickfeld", auswahl.length)}`;

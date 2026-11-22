@@ -51,8 +51,8 @@ button { font: inherit; }
 .stiel { position: absolute; width: 2px; background: rgba(255,255,255,.85); }
 .stiel.fokus { background: var(--gelb); }
 .label { position: absolute; width: 140px; pointer-events: auto; text-align: center;
-  background: rgba(0,0,0,.72); border-radius: 8px; padding: 4px 8px; cursor: pointer; }
-.label.fokus { border: 2px solid var(--gelb); background: rgba(0,0,0,.85); }
+  background: rgba(18,22,28,.9); border-radius: 8px; padding: 4px 8px; cursor: pointer; }
+.label.fokus { border: 2px solid var(--gelb); background: rgba(10,14,20,.94); }
 .label .name { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .label.fokus .name { color: var(--gelb); }
 .label .info { font-size: 11px; opacity: .8; }
