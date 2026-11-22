@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1C30">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Rundblick</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== Startbildschirm ===================== -->
+  <section id="start" class="screen">
+    <div class="start-inhalt">
+      <div class="marke">RUNDBLICK</div>
+      <h1 data-t="start_titel"></h1>
+      <p class="gebiet">🇨🇭 <span data-t="start_gebiet"></span></p>
+      <ul class="merkmale">
+        <li><span>⛰️</span><span data-t="start_merkmal_erkennen"></span></li>
+        <li><span>🎯</span><span data-t="start_merkmal_anvisieren"></span></li>
+        <li><span>📖</span><span data-t="start_merkmal_infos"></span></li>
+      </ul>
+    </div>
+    <div class="landschaft">
+      <svg viewBox="0 0 400 220" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="glut" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F2B880" stop-opacity="0"/>
+            <stop offset="0.45" stop-color="#F2B880"/>
+          </linearGradient>
+          <radialGradient id="schein"><stop offset="0" stop-color="#FFE1A8" stop-opacity=".7"/><stop offset="1" stop-color="#FFE1A8" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="400" height="220" fill="url(#glut)"/>
+        <circle cx="112" cy="96" r="80" fill="url(#schein)"/>
+        <circle cx="112" cy="96" r="20" fill="#FFE3A6"/>
+        <path d="M0 220 L0 80 L48 58 L100 74 L160 36 L208 62 L264 22 L320 60 L368 40 L400 62 L400 220Z" fill="#3B5B75"/>
+        <path d="M0 220 L0 118 L72 92 L132 112 L200 86 L248 104 L312 90 L400 112 L400 220Z" fill="#233F59"/>
+        <path d="M0 220 L0 162 L100 136 L180 156 L280 130 L400 158 L400 220Z" fill="#12253A"/>
+      </svg>
+      <div class="start-knopf-bereich">
+        <button id="startKnopf" class="knopf-gelb" data-t="start_knopf"></button>
+        <p class="fuss" data-t="start_fusszeile"></p>
+        <button id="startInfo" class="link-knopf" data-t="start_rechtliches"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Kamera-Ansicht ===================== -->
+  <section id="kamera" class="screen versteckt">
+    <video id="video" playsinline muted autoplay></video>
+    <div id="mittellinie"></div>
+    <div id="labels"></div>
+
+    <header id="status">
+      <div class="status-text">
+        <div id="statusOrt"></div>
+        <div id="statusKompass"></div>
+        <div id="statusDaten" class="klein"></div>
+        <div id="statusFilter" class="klein gelb versteckt"></div>
+        <div id="statusWarnung" class="klein gelb versteckt"></div>
+      </div>
+      <button id="einstellungenKnopf" class="icon-knopf" aria-label="Einstellungen">⚙️</button>
+    </header>
+
+    <div id="ausserhalb" class="mittel-box versteckt">
+      <div class="gross">🇨🇭</div>
+      <strong data-t="ausserhalb_titel"></strong>
+      <p data-t="ausserhalb_text"></p>
+    </div>
+
+    <div id="fokus" class="versteckt"></div>
+    <div class="osm-hinweis" data-t="osm_namensnennung"></div>
+  </section>
+
+  <!-- ===================== Fenster (Bottom Sheets) ===================== -->
+  <div id="sheetHintergrund" class="versteckt"></div>
+  <div id="sheet" class="versteckt" role="dialog" aria-modal="true">
+    <div class="sheet-griff"></div>
+    <div id="sheetInhalt"></div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
